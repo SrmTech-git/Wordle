@@ -10,7 +10,7 @@ public class Word {
 
 // Constructor
     public Word(String word) {
-        this.word = word;
+        this.word = word.toLowerCase();
         this.characters = Arrays.stream(word.split("")).toList();
     }
 
