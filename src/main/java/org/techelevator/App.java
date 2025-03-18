@@ -1,12 +1,25 @@
 package org.techelevator;
 
-public class App {
+import org.techelevator.Models.Word;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+//TODO: make sure its case insensitive
+//add a count to the loop that updates the try counter in the isPlaying loop
+//add method that checks the displaySpaces return to see if its 5 and if it is, then display win
+
+public class App {
+      Word word = new Word("Apple");
    public void run(){
       boolean isPlaying = true;
 
       while(isPlaying){
          splashScreen();
+         String guess = askForGuess();
+         displaySpaces(guess);
       }
    }
 
@@ -23,6 +36,51 @@ public class App {
 
    }
 
-   public void word
+   public String askForGuess(){
+      boolean validGuess = false;
+      String guess = "";
+
+      while(!validGuess){
+
+         System.out.println("Input your guess");
+         Scanner scanner = new Scanner(System.in);
+         guess = scanner.nextLine();
+
+         if(guess.length() == 5 && guess.matches("[a-zA-Z]+")){ //checks length and that is only letters, no digits
+            validGuess = true;
+            return guess;
+         }
+         else{
+            System.out.println("Please input a valid guess type (5 letters)");
+         }
+      }
+
+      return guess;
+
+   }
+
+   public int displaySpaces(String guessWord){
+      List<String> guessCharacters = Arrays.stream(guessWord.split("")).toList();
+      List<String> wordCharacters = word.getCharacters();
+      List<String> correctCharacters = new ArrayList<>();
+      List<String> partialWord = new ArrayList<>();
+
+      int count = 0;
+      for(int i = 0; i < 5; i++){
+         if(guessCharacters.get(i).equals(wordCharacters.get(i))){
+            count++; //Add correct counter
+            correctCharacters.add(guessCharacters.get(i)); //Add correct characters to the display list
+            partialWord.add(guessCharacters.get(i));
+         }else{
+            partialWord.add("*");
+         }
+      }
+
+      System.out.println("You got " + count + " characters correct");
+      System.out.println(correctCharacters);
+      System.out.println(partialWord);
+
+      return count;
+   }
 
 }
