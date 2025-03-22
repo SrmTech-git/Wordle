@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class App {
+public class WordleApp {
       Word word = getRandomWord();
    public void run(){
       boolean isPlaying = true;
@@ -81,8 +81,8 @@ public class App {
          }
       }
 
-      System.out.println("You got " + count + " characters correct");
-      System.out.println(correctCharacters);
+      System.out.println("You got " + count + " exact characters correct");
+      generalMatch(word.getWord(),guessWord);
       System.out.println(partialWord + "\n");
 
       return count;
@@ -149,6 +149,19 @@ public class App {
 
       int randomIndex = (int) (Math.random() * wordList.size());
       return wordList.get(randomIndex);
+   }
+
+   private static String generalMatch(String randomWord, String guess){
+      String[] guessWordCharacters = guess.split("");
+      String correctLetters = "";
+      for(int i =0; i < guessWordCharacters.length; i++){
+         if( randomWord.contains(guessWordCharacters[i])){
+            correctLetters = correctLetters + guessWordCharacters[i] + ", ";
+         }
+      }
+
+      System.out.println("Right letters, wrong place: [" + correctLetters +"]");
+      return correctLetters;
    }
 
 }

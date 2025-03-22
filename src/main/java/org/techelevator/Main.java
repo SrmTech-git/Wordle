@@ -1,10 +1,53 @@
 package org.techelevator;
 
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        App app = new App();
-        app.run();
+       getUserGameChoice();
+    }
+
+    public static void getUserGameChoice(){
+
+        while(true) {
+            System.out.println("------------------------------------------------------------\n" +
+                    ">>>>>>>>>>>>>>>>>>>>>>>>>GAME<<<TIME<<<<<<<<<<<<<<<<<<<<<<\n" +
+                    "------------------------------------------------------------\n");
+            System.out.println("Which game would you like to play today?\n" +
+                    String.format("► [1] %-10s --- %s\n", "Wordle", "A word guessing game with 5 guesses") +
+                    String.format("► [2] %-10s --- %s\n", "IYKYK", "An acronym guessing game with 3 guesses"));
+
+
+            Scanner scanner = new Scanner(System.in);
+            int userChoice = -1; // Initialize with an invalid choice
+
+            while (true) {
+                System.out.print("Please choose your game: ");
+                String input = scanner.nextLine(); // Read input as a string
+
+                try {
+                    userChoice = Integer.parseInt(input); // Attempt to parse input into an integer
+                    if (userChoice == 1 || userChoice == 2) { // Check if the choice is valid
+                        break; // Exit the loop if valid input
+                    } else {
+                        System.out.println("Invalid choice. Please enter 1 or 2.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a number (1 or 2).");
+                }
+            }
+
+            if (userChoice == 1) {
+                WordleApp wordleApp = new WordleApp();
+                wordleApp.run();
+            } else if (userChoice == 2) {
+                IYKYKApp IykykApp = new IYKYKApp();
+                IykykApp.run();
+            } else{
+                System.out.println("Invalid choice. Try again");
+            }
+        }
     }
 }
