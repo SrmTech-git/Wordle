@@ -20,14 +20,15 @@ public class WordleApp {
          String guess = askForGuess();
          int matches = displaySpaces(guess);
          guessCounter++;
-         guessCounterDisplay(guessCounter);
          isPlaying = isStillGuessing(matches, guessCounter, word);
+         guessCounterDisplay(guessCounter);
+
 
       }
    }
 
    public void splashScreen(){
-      System.out.println(  " W       W    OOOOO    RRRRR    DDDD     L        EEEEE\n" +
+      System.out.println(  "\n W       W    OOOOO    RRRRR    DDDD     L        EEEEE\n" +
                           " W   W   W   O     O   R    R   D   D    L        E    \n" +
                           " W  W W  W   O     O   RRRRR    D    D   L        EEEE \n" +
                           "  W     W    O     O   R  R     D   D    L        E    \n" +

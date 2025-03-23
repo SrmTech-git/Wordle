@@ -29,7 +29,7 @@ public class Main {
 
                 try {
                     userChoice = Integer.parseInt(input); // Attempt to parse input into an integer
-                    if (userChoice == 1 || userChoice == 2) { // Check if the choice is valid
+                    if (userChoice == 1 || userChoice == 2 || userChoice == 3) { // Check if the choice is valid
                         break; // Exit the loop if valid input
                     } else {
                         System.out.println("Invalid choice. Please enter 1 or 2.");
@@ -45,6 +45,8 @@ public class Main {
             } else if (userChoice == 2) {
                 IYKYKApp IykykApp = new IYKYKApp();
                 IykykApp.run();
+            }else if (userChoice == 3) {
+                //run Hangman
             } else{
                 System.out.println("Invalid choice. Try again");
             }

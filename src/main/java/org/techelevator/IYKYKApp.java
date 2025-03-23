@@ -18,9 +18,10 @@ public class IYKYKApp {
             String guess = getPlayerGuess();
             int matches = displaySpaces(guess);
             guessCounter++;
+            isPlaying = isStillGuessing(matches, guessCounter, randomAcronym);
             guessCounterDisplay(guessCounter);
             displayClue(guessCounter);
-            isPlaying = isStillGuessing(matches, guessCounter, randomAcronym);
+
 
         }
 
@@ -149,7 +150,7 @@ public class IYKYKApp {
             String[] meaningSplit = randomAcronym.getMeaning().split(" ");
             int meaningSplitLength = meaningSplit.length;
             String randomMeaningWord = meaningSplit[getRandomMeaningWordInt(meaningSplitLength)];
-            System.out.println("Here is a random word in the acronym meaning to help you guess: " + randomMeaningWord);
+            System.out.println("CLUE: Here is a random word in the acronym meaning to help you guess: " + randomMeaningWord);
         }
     }
 
@@ -192,7 +193,7 @@ public class IYKYKApp {
         // Iterate through the groups to find the range
         for (List<String> group : letterGroups) {
             if (group.contains(letter.toUpperCase())) {
-                return "One of these letters is in the Acronym: " + String.join(", ", group) + ".";
+                return "CLUE: One of these letters is in the Acronym: " + String.join(", ", group) + ".";
             }
         }
 
@@ -218,7 +219,7 @@ public class IYKYKApp {
             }
         }
 
-        System.out.println("Right letters, wrong place: [" + correctLetters + "]");
+        System.out.println("Right letters, maybe wrong place: [" + correctLetters + "]");
         return correctLetters;
     }
 
