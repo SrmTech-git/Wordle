@@ -21,7 +21,7 @@ public class HangmanApp {
             correctLetters.add('*');
         }
 
-        wrongGuessCounter = 0;
+
         splashScreen();
 
         while (isPlaying) {
@@ -33,19 +33,19 @@ public class HangmanApp {
             guessCounterDisplay(correctGuess);
             isPlaying = isStillGuessing(wrongGuessCounter, unknownLetterCount, word);
 
-
         }
     }
 
     public void splashScreen(){
-        System.out.println(  "HH   HH     A     N   N   GGGG   MM   MM     A     N   N\n" +
-                "HH   HH    A A    NN  N  G       MMM MMM    A A    NN  N\n" +
-                "HHHHHHH   AAAAA   N N N  G  GG   M  M  M   AAAAA   N N N\n" +
-                "HH   HH  A     A  N  NN  G   G   M     M  A     A  N  NN\n" +
-                "HH   HH A       A N   N   GGG    M     M A       A N   N\n");
+        System.out.println(  "  " +
+                "  SSS    N   N    OOO    W   W   M   M    A    N   N\n" +
+                " S   S   NN  N   O   O   W   W   MM MM   A A   NN  N\n" +
+                "  SSS    N N N   O   O   W W W   M M M  AAAAA  N N N\n" +
+                "     S   N  NN   O   O   W W W   M   M  A   A  N  NN\n" +
+                " SSSS    N   N    OOO     W W    M   M  A   A  N   N\n");
 
-        System.out.println("Welcome to Hangman! You'll be given a mystery word.\n" +
-                "Which you will have to guess the word without reaching 6 wrong guesses\n" +
+        System.out.println("Welcome to SNOWMAN! You'll be given a mystery word.\n" +
+                "Which you will have to guess the word one letter at a time without reaching 5 wrong guesses\n" +
                 "Good luck! \n");
 
 
@@ -98,6 +98,7 @@ public class HangmanApp {
             wrongGuessCounter++;
         }
         System.out.println("Wrong guesses: " + wrongGuessCounter);
+        guessArt(wrongGuessCounter);
         return wrongGuessCounter;
     }
 
@@ -172,5 +173,50 @@ public class HangmanApp {
         return wordList.get(randomIndex);
     }
 
+    public void guessArt(int guessCount){
+        if(guessCount == 1){
+            System.out.println(
+                            "      |===|\n" +
+                            "     _|===|_\n" +
+                            "     ( o o )   \n" +
+                            "     ( _>_ ) ");
+        }else if(guessCount == 2){
+            System.out.println("" +
+                    "      |===|\n" +
+                    "     _|===|_\n" +
+                    "     ( o o )   \n" +
+                    "     ( _>_ ) \n" +
+                    "    (   o   ) \n" +
+                    "    (  _o_  )");
+        }else if(guessCount == 3){
+            System.out.println("     " +
+                    "      |===|\n" +
+                    "     _|===|_\n" +
+                    " Ɏ   ( o o )   \n" +
+                    "  \\  ( _>_ )  \n" +
+                    "   \\(   o   )\n" +
+                    "    (  _o_  )");
+        }else if(guessCount == 4){
+            System.out.println("" +
+                    "      |===|\n" +
+                    "     _|===|_\n" +
+                    " Ɏ   ( o o )   Ɏ\n" +
+                    "  \\  ( _>_ )  /\n" +
+                    "   \\(   o   )/\n" +
+                    "    (  _o_  )");
+        }else if(guessCount == 5){
+            System.out.println("" +
+                    "      |===|\n" +
+                    "     _|===|_\n" +
+                    " Ɏ   ( o o )   Ɏ\n" +
+                    "  \\  ( _>_ )  /\n" +
+                    "   \\(   o   )/\n" +
+                    "    (  _o_  )\n" +
+                    "   (\t     )\n" +
+                    "   (\t     )\n" +
+                    "   (_________)"
+            );
+        }
+    }
 
 }

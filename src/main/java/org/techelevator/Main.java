@@ -18,7 +18,7 @@ public class Main {
             System.out.println("Which game would you like to play today?\n" +
                     String.format("► [1] %-10s --- %s\n", "Wordle", "A word guessing game with 5 guesses") +
                     String.format("► [2] %-10s --- %s\n", "IYKYK", "An acronym guessing game with 3 guesses")+
-                    String.format("► [3] %-10s --- %s\n", "Hangman", "An word guessing game with a limit of wrong guesses")
+                    String.format("► [3] %-10s --- %s\n", "Snowman", "An word guessing game with a limit of 5 wrong guesses")
                     );
 
 

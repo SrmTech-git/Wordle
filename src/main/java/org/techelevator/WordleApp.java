@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class WordleApp {
       Word word = getRandomWord();
+      //TODO make the display letters persistent
+      List<Character> displayCharacters = new ArrayList<>(Arrays.asList('*', '*', '*', '*', '*'));
+
    public void run(){
       boolean isPlaying = true;
       int guessCounter = 0;
@@ -68,23 +71,29 @@ public class WordleApp {
       guessWord = guessWord.toLowerCase();
       List<String> guessCharacters = Arrays.stream(guessWord.split("")).toList();
       List<String> wordCharacters = word.getCharacters();
-      List<String> correctCharacters = new ArrayList<>();
-      List<String> partialWord = new ArrayList<>();
 
-      int count = 0;
       for(int i = 0; i < 5; i++){
-         if(guessCharacters.get(i).equalsIgnoreCase(wordCharacters.get(i))){
-            count++; //Add correct counter
-            correctCharacters.add(guessCharacters.get(i)); //Add correct characters to the display list
-            partialWord.add(guessCharacters.get(i));
-         }else{
-            partialWord.add("*");
+         if(displayCharacters.get(i).equals('*')){
+            if(guessCharacters.get(i).equalsIgnoreCase(wordCharacters.get(i))){
+               char guessCharacter = guessCharacters.get(i).charAt(0);
+               displayCharacters.set(i,guessCharacter);
+            }
          }
       }
 
+      //see how many characters out of 5 are correct
+      char targetCharacter = '*';
+      int asteriskCount = 0;
+      for (char letter : displayCharacters) {
+         if (letter == targetCharacter) {
+            asteriskCount++;
+         }
+      }
+      int count = 5 - asteriskCount;
+
       System.out.println("You got " + count + " exact characters correct");
       generalMatch(word.getWord(),guessWord);
-      System.out.println(partialWord + "\n");
+      System.out.println(displayCharacters);
 
       return count;
    }
