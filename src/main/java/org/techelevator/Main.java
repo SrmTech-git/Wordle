@@ -28,7 +28,7 @@ public class Main {
 
             while (true) {
                 System.out.print("Please choose your game: ");
-                String input = scanner.nextLine(); // Read input as a string
+                String input = scanner.nextLine();
 
                 try {
                     userChoice = Integer.parseInt(input); // Attempt to parse input into an integer
