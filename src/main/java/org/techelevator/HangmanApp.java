@@ -38,8 +38,8 @@ public class HangmanApp {
 
     public void splashScreen(){
         System.out.println(  "  " +
-                "  SSS    N   N    OOO    W   W   M   M    A    N   N\n" +
-                " S   S   NN  N   O   O   W   W   MM MM   A A   NN  N\n" +
+                "  SSSS   N   N    OOO    W   W   M   M    A    N   N\n" +
+                " S     S   NN  N   O   O   W   W   MM MM   A A   NN  N\n" +
                 "  SSS    N N N   O   O   W W W   M M M  AAAAA  N N N\n" +
                 "     S   N  NN   O   O   W W W   M   M  A   A  N  NN\n" +
                 " SSSS    N   N    OOO     W W    M   M  A   A  N   N\n");
@@ -189,7 +189,8 @@ public class HangmanApp {
                     "    (   o   ) \n" +
                     "    (  _o_  )");
         }else if(guessCount == 3){
-            System.out.println("     " +
+            System.out.println(
+                    "     \n" +
                     "      |===|\n" +
                     "     _|===|_\n" +
                     " Ɏ   ( o o )   \n" +

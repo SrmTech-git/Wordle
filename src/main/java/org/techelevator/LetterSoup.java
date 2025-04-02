@@ -10,7 +10,7 @@ public class LetterSoup {
 
     public LetterSoup() {
     }
-    
+
 
 //*************
 //   Methods
@@ -21,7 +21,7 @@ public class LetterSoup {
     public void run(){
         splashScreen();
         boolean stillGuessing = true;
-        List<Character> randomLetters = getRandomletters();
+        List<Character> randomLetters = getRandomLetters();
         while(stillGuessing) {
 
             System.out.println(randomLetters);
@@ -39,23 +39,23 @@ public class LetterSoup {
 
 
 
-    public List<Character> getRandomletters(){
+    public List<Character> getRandomLetters() {
         List<Character> randomLetters = new ArrayList<>();
         Random random = new Random();
         boolean hasVariety = false;
-        boolean hasVowels = false;
-        boolean hasUniqueLetters = false;
 
-        while(!hasVariety) {
+        while (!hasVariety) {
+            randomLetters.clear(); // Clear the list before adding new letters
+
             for (int i = 0; i < 6; i++) {
                 char letter = (char) (random.nextInt(26) + 'a'); // Generates a random letter (a-z)
                 randomLetters.add(letter); // Add the letter to the list
             }
 
-            hasVowels = containsVowel(randomLetters);
-            hasUniqueLetters = uniqueLetters(randomLetters);
+            boolean hasVowels = containsVowel(randomLetters);
+            boolean hasUniqueLetters = uniqueLetters(randomLetters);
 
-            if(hasUniqueLetters && hasVowels){
+            if (hasUniqueLetters && hasVowels) {
                 hasVariety = true;
             }
         }
@@ -137,6 +137,8 @@ public class LetterSoup {
 
             if(isWordValid(guess)){
                 validWord = true;
+            }else{
+                System.out.println("That isn't a valid word. Try again.");
             }
 
             if(hasRightLetters && hasValidLength && notRepeated && validWord){

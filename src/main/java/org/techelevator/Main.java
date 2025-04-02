@@ -16,10 +16,11 @@ public class Main {
                     ">>>>>>>>>>>>>>>>>>>>>>>>>GAME<<<TIME<<<<<<<<<<<<<<<<<<<<<<\n" +
                     "------------------------------------------------------------\n");
             System.out.println("Which game would you like to play today?\n" +
-                    String.format("► [1] %-10s --- %s\n", "Wordle", "A word guessing game with 5 guesses") +
-                    String.format("► [2] %-10s --- %s\n", "IYKYK", "A acronym guessing game with 3 guesses")+
-                    String.format("► [3] %-10s --- %s\n", "Snowman", "A word guessing game with a limit of 5 wrong guesses")+
-                    String.format("► [4] %-10s --- %s\n", "LetterSoup", "An word guessing game with unlimited tries, but limited right answers")
+                    String.format("► [1] %-12s --- %s\n", "Wordle", "A word guessing game with 5 guesses") +
+                    String.format("► [2] %-12s --- %s\n", "IYKYK", "A acronym guessing game with 3 guesses")+
+                    String.format("► [3] %-12s --- %s\n", "Snowman", "A word guessing game with a limit of 5 wrong guesses")+
+                    String.format("► [4] %-12s --- %s\n", "LetterSoup", "An word guessing game with unlimited tries, but limited right answers.")+
+                    String.format("► [5] %-12s --- %s\n", "Word Ladder", "A word creation game, changing a word one letter at a time to create a new one.")
                     );
 
 
@@ -32,13 +33,13 @@ public class Main {
 
                 try {
                     userChoice = Integer.parseInt(input); // Attempt to parse input into an integer
-                    if (userChoice == 1 || userChoice == 2 || userChoice == 3|| userChoice == 4) { // Check if the choice is valid
+                    if (userChoice == 1 || userChoice == 2 || userChoice == 3|| userChoice == 4|| userChoice == 5) { // Check if the choice is valid
                         break; // Exit the loop if valid input
                     } else {
-                        System.out.println("Invalid choice. Please enter 1, 2, 3 or 4.");
+                        System.out.println("Invalid choice. Please enter 1, 2, 3, 4 or 5.");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Invalid input. Please enter a number (1, 2, 3 or 4).");
+                    System.out.println("Invalid input. Please enter a number (1, 2, 3, 4 or 5).");
                 }
             }
 
@@ -54,6 +55,9 @@ public class Main {
             }else if (userChoice == 4) {
                 LetterSoup letterSoup = new LetterSoup();
                letterSoup.run();
+            }else if (userChoice == 5) {
+                WordLadder wordLadder = new WordLadder();
+                wordLadder.run();
             } else{
                 System.out.println("Invalid choice. Try again");
             }
